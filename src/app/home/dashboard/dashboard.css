@@ -1,0 +1,51 @@
+/* Sidebar Link Hover Effect */
+.hover-light:hover {
+    color: #fff !important;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 0.25rem;
+  }
+  
+  /* Ensure chart container is responsive */
+  canvas {
+    width: 100% !important;
+    height: 100% !important;
+  }
+  
+  /* Table styling fixes */
+  .table th {
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+    color: #6c757d;
+  }
+
+
+  /* 1. height: 100vh -> Forces sidebar to be exactly the height of the screen.
+   2. position: sticky -> Keeps it pinned to the top (0).
+   3. overflow-y: auto -> Enables the scrollbar ONLY inside the sidebar if items overflow.
+*/
+.sidebar-wrapper {
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  overflow-y: auto;
+  
+  /* Custom Scrollbar Styling (Optional - makes it look cleaner) */
+  scrollbar-width: thin; /* Firefox */
+  scrollbar-color: #6c757d #212529; /* Thumb and Track colors */
+}
+
+/* Chrome, Edge, and Safari Scrollbar styling */
+.sidebar-wrapper::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sidebar-wrapper::-webkit-scrollbar-track {
+  background: #212529; /* Dark background matches sidebar */
+}
+
+.sidebar-wrapper::-webkit-scrollbar-thumb {
+  background-color: #6c757d; /* Grey handle */
+  border-radius: 10px;
+}

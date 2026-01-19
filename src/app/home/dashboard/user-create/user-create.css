@@ -1,0 +1,33 @@
+/* Small letter spacing for uppercase labels */
+.ls-1 {
+  letter-spacing: 1px;
+}
+
+/* Ensure pointer cursor on status badges */
+.pointer {
+  cursor: pointer;
+}
+
+/* Modern Input Style:
+   Removes default ugly blue outline and adds a soft shadow instead */
+.form-control:focus, .form-select:focus {
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+    border-color: transparent; /* Or a very light primary color */
+    background-color: #fff !important; /* Turn white on focus */
+}
+
+/* Ensure input group text matches the input style */
+.input-group-text {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.input-group .form-control, .input-group .form-select {
+     border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+/* Hide the actual radio button circle for status, we use the label style */
+.form-check-input.d-none:checked + label {
+    box-shadow: inset 0 0 0 2px currentColor; /* Highlights selected badge */
+    font-weight: bold;
+}

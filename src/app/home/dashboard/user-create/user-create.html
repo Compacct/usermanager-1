@@ -1,0 +1,124 @@
+<div class="row justify-content-center">
+  <div class="col-lg-10 col-xl-9">
+
+    <div class="card border-0 shadow-lg rounded-4 overflow-hidden mt-4">
+
+      <div class="card-body p-4 p-md-5">
+        <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+
+          <div class="row g-4 mb-4">
+            <div class="col-12">
+               <h6 class="fw-bold text-muted text-uppercase small ls-1 mb-0">Identity & Contact</h6>
+               <hr class="mt-2 mb-0 opacity-10">
+            </div>
+
+            <div class="col-md-2 text-center d-flex flex-column align-items-center justify-content-center">
+              <div class="bg-light rounded-circle d-flex align-items-center justify-content-center mb-2" style="width: 80px; height: 80px;">
+                 <i class="bi bi-person-plus-fill fs-1 text-secondary opacity-25"></i>
+              </div>
+              <span class="small text-primary fw-bold pointer">Upload</span>
+            </div>
+
+            <div class="col-md-10">
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label class="form-label fw-bold small text-muted">First Name</label>
+                  <div class="input-group">
+                    <span class="input-group-text bg-light border-0 ps-3 text-secondary"><i class="bi bi-person"></i></span>
+                    <input type="text" class="form-control bg-light border-0 shadow-sm" formControlName="firstName" placeholder="John"
+                      [class.is-invalid]="f['firstName'].invalid && f['firstName'].touched">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label fw-bold small text-muted">Last Name</label>
+                   <div class="input-group">
+                    <span class="input-group-text bg-light border-0 ps-3 text-secondary"><i class="bi bi-person"></i></span>
+                    <input type="text" class="form-control bg-light border-0 shadow-sm" formControlName="lastName" placeholder="Doe"
+                      [class.is-invalid]="f['lastName'].invalid && f['lastName'].touched">
+                  </div>
+                </div>
+                <div class="col-12">
+                  <label class="form-label fw-bold small text-muted">Email Address</label>
+                  <div class="input-group">
+                    <span class="input-group-text bg-light border-0 ps-3 text-secondary"><i class="bi bi-envelope"></i></span>
+                    <input type="email" class="form-control bg-light border-0 shadow-sm" formControlName="email" placeholder="john.doe@company.com"
+                      [class.is-invalid]="f['email'].invalid && f['email'].touched">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row g-4 mb-5">
+            <div class="col-12">
+               <h6 class="fw-bold text-muted text-uppercase small ls-1 mb-0">Access Control</h6>
+               <hr class="mt-2 mb-0 opacity-10">
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label fw-bold small text-muted">Assign Role</label>
+               <div class="input-group">
+                  <span class="input-group-text bg-light border-0 ps-3 text-secondary"><i class="bi bi-shield-lock"></i></span>
+                  <select class="form-select bg-light border-0 shadow-sm" formControlName="role" style="cursor: pointer;">
+                    <option value="" disabled>Select permission level...</option>
+                    <option value="Admin">Administrator</option>
+                    <option value="Manager">Manager</option>
+                    <option value="Editor">Editor</option>
+                    <option value="User">Standard User</option>
+                  </select>
+               </div>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label fw-bold small text-muted">Department</label>
+               <div class="input-group">
+                  <span class="input-group-text bg-light border-0 ps-3 text-secondary"><i class="bi bi-building"></i></span>
+                  <select class="form-select bg-light border-0 shadow-sm" formControlName="department" style="cursor: pointer;">
+                    <option value="">Select Department...</option>
+                    <option value="IT">IT & Engineering</option>
+                    <option value="HR">Human Resources</option>
+                    <option value="Sales">Sales & Marketing</option>
+                    <option value="Finance">Finance</option>
+                  </select>
+               </div>
+            </div>
+          </div>
+
+          <div class="mb-5 bg-light-subtle p-4 rounded-3 border border-light">
+            <label class="form-label fw-bold small text-muted d-block mb-3">Initial Account Status</label>
+            <div class="d-flex gap-3 flex-wrap">
+              <div class="form-check ps-0">
+                <input class="form-check-input d-none" type="radio" id="statusActive" value="Active" formControlName="status">
+                <label class="form-check-label badge bg-white text-success border border-success border-opacity-25 px-4 py-2 rounded-pill shadow-sm pointer user-select-none" for="statusActive">
+                  <i class="bi bi-check-circle-fill me-2"></i>Active
+                </label>
+              </div>
+              <div class="form-check ps-0">
+                <input class="form-check-input d-none" type="radio" id="statusInactive" value="Inactive" formControlName="status">
+                <label class="form-check-label badge bg-white text-secondary border border-secondary border-opacity-25 px-4 py-2 rounded-pill shadow-sm pointer user-select-none" for="statusInactive">
+                  <i class="bi bi-slash-circle me-2"></i>Inactive
+                </label>
+              </div>
+              <div class="form-check ps-0">
+                <input class="form-check-input d-none" type="radio" id="statusPending" value="Pending" formControlName="status">
+                <label class="form-check-label badge bg-white text-warning border border-warning border-opacity-25 px-4 py-2 rounded-pill shadow-sm pointer user-select-none" for="statusPending">
+                  <i class="bi bi-clock-history me-2"></i>Pending
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="d-flex justify-content-end align-items-center gap-3">
+             <a routerLink="/dashboard" class="btn btn-light text-muted fw-bold px-4 rounded-pill">Cancel</a>
+            <button type="submit" class="btn btn-primary px-5 py-2 fw-bold shadow-lg rounded-pill" [disabled]="isSubmitting">
+              <span *ngIf="isSubmitting" class="spinner-border spinner-border-sm me-2"></span>
+              {{ isSubmitting ? 'Creating User...' : 'Create User' }}
+            </button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+
+  </div>
+</div>

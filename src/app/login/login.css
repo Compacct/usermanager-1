@@ -1,0 +1,22 @@
+/* Full page background with a modern gradient */
+.login-page {
+    background: linear-gradient(135deg, #f0f2f5 0%, #d9e2ec 100%);
+    padding: 1rem;
+  }
+  
+  /* Card sizing restriction */
+  .login-card {
+    width: 100%;
+    max-width: 450px;
+  }
+  
+  /* Optional: Smooth transition for inputs */
+  .form-control {
+    transition: all 0.2s ease-in-out;
+  }
+  
+  /* Optional: Slight lift effect on input focus for modern feel */
+  .form-control:focus {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.05);
+    border-color: #0d6efd;
+  }

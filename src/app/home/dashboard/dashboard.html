@@ -1,0 +1,96 @@
+<div class="d-flex" id="wrapper">
+  
+  <div class="bg-dark text-white sidebar-wrapper sticky-top d-none d-md-block flex-shrink-0" style="width: 250px;">
+    
+    <div class="p-3">
+      <div class="d-flex align-items-center mb-4">
+        <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center me-2" style="width: 40px; height: 40px;">
+          <span class="fw-bold">A</span>
+        </div>
+        <h5 class="m-0 fw-bold">AdminPanel</h5>
+      </div>
+
+      <ul class="nav flex-column">
+        
+        <li class="nav-item mb-2">
+          <a routerLink="/dashboard" 
+             routerLinkActive="bg-primary text-white shadow-sm" 
+             [routerLinkActiveOptions]="{exact: true}"
+             class="nav-link text-white-50 hover-light rounded">
+             <i class="bi bi-speedometer2 me-2"></i> Dashboard
+          </a>
+        </li>
+
+        <li class="nav-item mb-2">
+          <a routerLink="/dashboard/user" 
+             routerLinkActive="bg-primary text-white shadow-sm"
+             class="nav-link text-white-50 hover-light rounded">
+             <i class="bi bi-people me-2"></i> Users
+          </a>
+        </li>
+
+        <li class="nav-item mb-2"><a href="#" class="nav-link text-white-50 hover-light rounded"><i class="bi bi-cart me-2"></i> Products</a></li>
+        <li class="nav-item mb-2"><a href="#" class="nav-link text-white-50 hover-light rounded"><i class="bi bi-bag me-2"></i> Orders</a></li>
+        <li class="nav-item mb-2"><a href="#" class="nav-link text-white-50 hover-light rounded"><i class="bi bi-bar-chart me-2"></i> Analytics</a></li>
+        <li class="nav-item mb-2"><a href="#" class="nav-link text-white-50 hover-light rounded"><i class="bi bi-envelope me-2"></i> Messages</a></li>
+        
+        <hr class="text-white-50 my-3">
+        <div class="text-uppercase small text-white-50 fw-bold mb-2">Management</div>
+
+        <li class="nav-item mb-2"><a href="#" class="nav-link text-white-50 hover-light rounded"><i class="bi bi-gear me-2"></i> Settings</a></li>
+        <li class="nav-item mb-2"><a href="#" class="nav-link text-white-50 hover-light rounded"><i class="bi bi-shield-lock me-2"></i> Security</a></li>
+        <li class="nav-item mb-2"><a href="#" class="nav-link text-white-50 hover-light rounded"><i class="bi bi-power me-2"></i> Logout</a></li>
+        <li class="nav-item mb-2" style="height: 100px;"></li> 
+      </ul>
+    </div>
+  </div>
+
+  <div class="flex-fill bg-light min-vh-100">
+    <nav class="navbar navbar-light bg-white shadow-sm px-4">
+      <div class="d-flex align-items-center w-100 justify-content-between">
+        <button class="btn btn-outline-secondary d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileSidebar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <h5 class="d-none d-md-block m-0 text-muted">{{headerService.title()}}</h5>
+        
+        <div class="dropdown">
+          <a href="#" class="d-flex align-items-center text-decoration-none text-dark dropdown-toggle" data-bs-toggle="dropdown">
+            <img src="https://placehold.co/40x40" alt="" class="rounded-circle me-2">
+            <strong>Admin</strong>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li><a class="dropdown-item" href="#">Profile</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item text-danger" href="#">Sign out</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <router-outlet></router-outlet>
+  </div>
+</div>
+
+<div class="offcanvas offcanvas-start bg-dark text-white" tabindex="-1" id="mobileSidebar">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title fw-bold">AdminPanel</h5>
+    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+  </div>
+  <div class="offcanvas-body">
+    <ul class="nav flex-column">
+      <li class="nav-item mb-2">
+        <a routerLink="/dashboard" 
+           routerLinkActive="bg-primary text-white" 
+           [routerLinkActiveOptions]="{exact: true}"
+           class="nav-link text-white-50 rounded">Dashboard</a>
+      </li>
+      <li class="nav-item mb-2">
+        <a routerLink="/dashboard/user" 
+           routerLinkActive="bg-primary text-white" 
+           class="nav-link text-white-50 rounded">Users</a>
+      </li>
+      <li class="nav-item mb-2"><a href="#" class="nav-link text-white-50">Settings</a></li>
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,125 @@
+<div class="container-fluid p-4">
+  <div class="row g-3 mb-4">
+    <div class="col-md-4">
+      <div class="card border-0 shadow-sm p-3">
+        <div class="d-flex justify-content-between align-items-center">
+          <div>
+            <p class="text-muted small mb-1">Total Users</p>
+            <h3 class="fw-bold mb-0">{{ totalUsers }}</h3>
+          </div>
+          <div class="bg-primary bg-opacity-10 text-primary p-3 rounded-circle">
+            <i class="bi bi-people-fill fs-4"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card border-0 shadow-sm p-3">
+        <div class="d-flex justify-content-between align-items-center">
+          <div>
+            <p class="text-muted small mb-1">Active Users</p>
+            <h3 class="fw-bold text-success mb-0">{{ activeUsers }}</h3>
+          </div>
+          <div class="bg-success bg-opacity-10 text-success p-3 rounded-circle">
+            <i class="bi bi-check-circle-fill fs-4"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card border-0 shadow-sm p-3">
+        <div class="d-flex justify-content-between align-items-center">
+          <div>
+            <p class="text-muted small mb-1">Inactive Users</p>
+            <h3 class="fw-bold text-danger mb-0">{{ inactiveUsers }}</h3>
+          </div>
+          <div class="bg-danger bg-opacity-10 text-danger p-3 rounded-circle">
+            <i class="bi bi-x-circle-fill fs-4"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card border-0 shadow-sm mb-4">
+    <div class="card-header bg-white border-0 py-3">
+      <h5 class="fw-bold mb-0">User Growth Analytics</h5>
+    </div>
+    <div class="card-body">
+      <div style="height: 300px">
+        <canvas #userChart></canvas>
+      </div>
+    </div>
+  </div>
+
+  <div class="card border-0 shadow-sm">
+    <div
+      class="card-header bg-white border-0 py-3 d-flex justify-content-between align-items-center"
+    >
+      <h5 class="fw-bold mb-0">Recent Users</h5>
+
+      <div class="d-flex gap-2">
+        <button class="btn btn-danger" (click)="downloadPDF()">
+          <i class="bi bi-file-earmark-pdf"></i> Download PDF
+        </button>
+
+        <!-- <button class="btn btn-outline-success btn-sm" (click)="downloadExcel()">
+      <i class="bi bi-file-earmark-excel"></i> Excel
+    </button> -->
+
+        <button class="btn btn-primary btn-sm" (click)="createNewUser()">
+          <i class="bi bi-plus-lg"></i> Create
+        </button>
+      </div>
+    </div>
+    <div class="card-body p-0">
+      <div class="table-responsive">
+        <table class="table table-hover align-middle mb-0">
+          <thead class="bg-light">
+            <tr>
+              <th class="ps-4">Name</th>
+              <th>Role</th>
+              <th>Status</th>
+              <th class="text-end pe-4">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let user of users">
+              <td class="ps-4">
+                <div class="d-flex align-items-center">
+                  <div
+                    class="bg-secondary bg-opacity-25 rounded-circle d-flex align-items-center justify-content-center me-3"
+                    style="width: 40px; height: 40px"
+                  >
+                    {{ user.name.charAt(0) }}
+                  </div>
+                  <div>
+                    <h6 class="mb-0 fw-bold">{{ user.name }}</h6>
+                    <small class="text-muted">{{ user.email }}</small>
+                  </div>
+                </div>
+              </td>
+              <td>{{ user.role }}</td>
+              <td>
+                <span
+                  class="badge rounded-pill"
+                  [ngClass]="{
+                    'bg-success': user.status === 'Active',
+                    'bg-secondary': user.status === 'Inactive',
+                    'bg-warning text-dark': user.status === 'Pending',
+                  }"
+                >
+                  {{ user.status }}
+                </span>
+              </td>
+              <td class="text-end pe-4">
+                <button class="btn btn-sm btn-light text-primary me-2">Edit</button>
+                <button class="btn btn-sm btn-light text-danger">Delete</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
